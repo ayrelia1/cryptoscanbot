@@ -1,0 +1,17 @@
+{
+    "solscan": "(<emoji id=5343649557785879150>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=5343649557785879150>🪙</emoji> ca:\n<b>{address}</b>\n",
+    "etherscan": "(<emoji id=4911178692182410246>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=4911178692182410246>🪙</emoji> ca:\n<b>{address}</b>\n",
+    "basescan": "(<emoji id=4911400458523771897>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=4911400458523771897>🪙</emoji> ca:\n<b>{address}</b>\n",
+    "tonscan": "(<emoji id=5345889288741461772>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=5345889288741461772>🪙</emoji> ca:\n<b>{address}</b>\n",
+
+
+    "telegram_emoji": "<emoji id=5217561885049628845>✅</emoji>",
+    "website_emoji": "<emoji id=5447410659077661506>🌐</emoji>",
+    "dexscreener_emoji": "<emoji id=5269460053651366623>📈</emoji>",
+
+
+    "x_template": ""
+
+}
+
+
