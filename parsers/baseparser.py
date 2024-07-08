@@ -9,10 +9,10 @@ class BaseParser(ABC):
     
     @asynccontextmanager
     async def get_browser(self):
+        vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
+        vdisplay.start()
         driver = get_user_browser()
         try:
-            vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
-            vdisplay.start()
             yield driver
         finally:
             vdisplay.stop()
