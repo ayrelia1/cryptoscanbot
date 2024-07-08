@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "crypto-scan-bot"
+version = "0.1.0"
+description = ""
+authors = ["Ayrelia <nikitakoteqka12@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiogram = "^3.10.0"
+psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.9"
+asyncpg = "^0.29.0"
+apscheduler = "^3.10.4"
+selenium = "^4.22.0"
+sqlalchemy = "^2.0.31"
+python-dotenv = "^1.0.1"
+pydantic-settings = "^2.3.4"
+lxml = "^5.2.2"
+aiohttp = "^3.9.5"
+asyncio = "^3.4.3"
+clipboard = "^0.0.4"
+xvfbwrapper = "^0.2.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

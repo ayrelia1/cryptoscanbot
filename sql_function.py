@@ -27,14 +27,14 @@ class databasework:
             await session.commit()
     
     
-    async def ins_token(address: str, price: float, name: str, symbol: str, channel_id: int, message_id: int):
+    async def ins_token(address: str, network: str, price: float, name: str, symbol: str, channel_id: int, message_id: int):
         async with async_session() as session:
             async with session.begin():
                 sql = """
-                INSERT INTO tokens (address, price, name, symbol, channel_id, message_id)
-                VALUES (:address, :price, :name, :symbol, :channel_id, :message_id)
+                INSERT INTO tokens (address, network, price, name, symbol, channel_id, message_id)
+                VALUES (:address, :price, :network, :name, :symbol, :channel_id, :message_id)
                 """
-                await session.execute(text(sql), {"address": str(address), "price": float(price), "name": str(name), "symbol": str(symbol), "channel_id": channel_id, "message_id": message_id})
+                await session.execute(text(sql), {"address": str(address), "network": str(network), "price": float(price), "name": str(name), "symbol": str(symbol), "channel_id": channel_id, "message_id": message_id})
             await session.commit()  # Подтверждение транзакции
     
     

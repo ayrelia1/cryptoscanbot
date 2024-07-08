@@ -24,8 +24,8 @@ import json
 import os
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
-
-
+from aiogram.client.bot import DefaultBotProperties
+from aiogram.enums.parse_mode import ParseMode
 
 load_dotenv()
 
@@ -46,7 +46,7 @@ settings = Settings()
 
      
 dp = Dispatcher(storage=MemoryStorage())
-bot = Bot(settings.BOT_TOKEN, parse_mode="html")
+bot = Bot(settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
 
 

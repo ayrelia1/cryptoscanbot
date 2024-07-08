@@ -136,7 +136,7 @@ async def scan_token(callback: types.CallbackQuery, state: FSMContext):
             await callback.message.answer(cleaned_text, parse_mode='html', reply_markup=markup, disable_web_page_preview=True)
     else:
         await callback.message.answer(cleaned_text, parse_mode='html', reply_markup=markup, disable_web_page_preview=True)
-    await state.update_data(text_message=text_message, cleaned_text=cleaned_text, image=result['image'], address=address, name=result['name'], symbol=symbol)
+    await state.update_data(network=network, text_message=text_message, cleaned_text=cleaned_text, image=result['image'], address=address, name=result['name'], symbol=symbol)
     
     
     
@@ -146,13 +146,14 @@ async def pub_post(callback: types.CallbackQuery, state: FSMContext):
     text = data['text_message']
     image = data['image']
     address = data['address']
+    network = data['network']
     print(image)
     try:
         async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
             if image:
                 image_path=data.get('image_path', None)
                 if image_path:
-                    msg = await app.send_photo(chat_id=-1002163207563, photo=image_path, caption=text, )
+                    msg = await app.send_photo(chat_id=-1002163207563, photo=image_path, caption=text)
                 else:
                     msg = await app.send_photo(chat_id=-1002163207563, photo=image, caption=text)
             else:
@@ -163,7 +164,7 @@ async def pub_post(callback: types.CallbackQuery, state: FSMContext):
         await bot.delete_message(message_id=callback.message.message_id, chat_id=callback.message.chat.id)
         await bot.send_message(chat_id=callback.message.chat.id, text='Отлично, пост отправлен!', reply_markup=menu(), disable_web_page_preview=True)
         price = await get_token_price(address)
-        await databasework.ins_token(address, price, data['name'], data['symbol'], channel_id, message_id)
+        await databasework.ins_token(address, network, price, data['name'], data['symbol'], channel_id, message_id)
         
     except Exception as ex:
         await bot.delete_message(message_id=callback.message.message_id, chat_id=callback.message.chat.id)

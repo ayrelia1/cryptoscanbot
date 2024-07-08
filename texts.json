@@ -10,7 +10,7 @@
     "dexscreener_emoji": "<emoji id=5269460053651366623>📈</emoji>",
 
 
-    "x_template": ""
+    "x_template": "Profit:  {x} (🔷 {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls (https://t.me/zeus_ca1ls)  ⚡"
 
 }
 

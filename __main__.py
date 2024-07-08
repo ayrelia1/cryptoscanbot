@@ -27,7 +27,7 @@ async def start_commands(bot: Bot):
     await bot.set_my_commands(commands, BotCommandScopeDefault())
 
     scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
-    scheduler.add_job(check_price_token, 'interval', seconds=3)
+    scheduler.add_job(check_price_token, 'interval', seconds=60)
     scheduler.start()
     
     task1 = asyncio.create_task(create_tables()) # создаем базу юзеров если нет

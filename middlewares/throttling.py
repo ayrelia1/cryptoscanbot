@@ -20,9 +20,9 @@ class ThrottlingMiddleware(BaseMiddleware):
             count = self.throt[user.id] + 1
             self.throt[user.id] = count
 
-            if count == 3:
+            if count == 5:
                 return await data['bot'].send_message(user.id, ('Не спамьте!'))
-            elif count > 2:
+            elif count > 4:
                 return
         else:
             self.throt[user.id] = 0

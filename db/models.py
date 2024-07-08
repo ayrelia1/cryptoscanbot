@@ -54,6 +54,7 @@ class Tokens(Base):
 
     id = mapped_column(Integer, primary_key=True, autoincrement=True)
     address = mapped_column(String(100), index=True)
+    network = mapped_column(String(100), index=True)
     price = mapped_column(Float)
     name = mapped_column(String(100), index=True)
     symbol = mapped_column(String(100), index=True)
