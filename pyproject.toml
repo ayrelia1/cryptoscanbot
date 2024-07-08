@@ -22,6 +22,7 @@ asyncio = "^3.4.3"
 clipboard = "^0.0.4"
 xvfbwrapper = "^0.2.9"
 cachetools = "^5.3.3"
+bs4 = "^0.0.2"
 
 
 [build-system]
