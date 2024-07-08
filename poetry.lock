@@ -1006,6 +1006,16 @@ files = [
 ]
 
 [[package]]
+name = "pyaes"
+version = "1.6.1"
+description = "Pure-Python Implementation of the AES block-cipher and common modes of operation"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyaes-1.6.1.tar.gz", hash = "sha256:02c1b1405c38d3c370b085fb952dd8bea3fadcee6411ad99f312cc129c536d8f"},
+]
+
+[[package]]
 name = "pycparser"
 version = "2.22"
 description = "C parser in Python"
@@ -1167,6 +1177,21 @@ python-versions = "*"
 files = [
     {file = "pyperclip-1.9.0.tar.gz", hash = "sha256:b7de0142ddc81bfc5c7507eea19da920b92252b548b96186caf94a5e2527d310"},
 ]
+
+[[package]]
+name = "pyrogram"
+version = "2.0.106"
+description = "Elegant, modern and asynchronous Telegram MTProto API framework in Python for users and bots"
+optional = false
+python-versions = "~=3.7"
+files = [
+    {file = "Pyrogram-2.0.106-py3-none-any.whl", hash = "sha256:32b62b3d93030b1080cbe45b88c0e8790cf4e2179cf3321ede810d48edf97bc7"},
+    {file = "Pyrogram-2.0.106.tar.gz", hash = "sha256:30202995758fcb6e0f91224704ab7fedefea454297724bd70a6a71a23748c16f"},
+]
+
+[package.dependencies]
+pyaes = "1.6.1"
+pysocks = "1.7.1"
 
 [[package]]
 name = "pysocks"
@@ -1596,4 +1621,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a506e0d0e3849ee07a8df6d5edf3a7d13bd29c929890ba3f043a9dbff4f6e079"
+content-hash = "2719cf7b5d8361fb447bbf549bb533b9b66bf7929fd5f59fd41d3dd147e9c9de"
