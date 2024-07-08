@@ -32,7 +32,7 @@ class databasework:
             async with session.begin():
                 sql = """
                 INSERT INTO tokens (address, network, price, name, symbol, channel_id, message_id)
-                VALUES (:address, :price, :network, :name, :symbol, :channel_id, :message_id)
+                VALUES (:address, :network, :price, :name, :symbol, :channel_id, :message_id)
                 """
                 await session.execute(text(sql), {"address": str(address), "network": str(network), "price": float(price), "name": str(name), "symbol": str(symbol), "channel_id": channel_id, "message_id": message_id})
             await session.commit()  # Подтверждение транзакции

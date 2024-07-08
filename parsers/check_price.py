@@ -18,12 +18,13 @@ async def check_price_token():
                 message_id = token[9]
                 network = token[2]
                 mcap = result_x['mcap']
+                symbol = result_x['symbol']
                 x = result_x['new_multiplier']
                 
-                text = texts['x_template'].format()
+                text = texts[f"x_template_{network}"].format(network=network, mcap=mcap, x=x, symbol=symbol)
                 
                 async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
-                    await app.send_message(text='', chat_id=channel_id, reply_to_message_id=message_id)
+                    await app.send_message(text=text, chat_id=channel_id, reply_to_message_id=message_id)
             
     except Exception as ex:
         logging.error(traceback.format_exc())
@@ -31,6 +32,9 @@ async def check_price_token():
         
     
     
+def format_number(num, precision=12):
+    return format(num, f'.{precision}f')
+
     
     
     
@@ -41,7 +45,7 @@ async def get_token_price(address):
             resp = await response.text()
             
     response = json.loads(resp)
-    return (response['pairs'][0]['priceUsd'], response['pairs'][0]['fdv'], response['pairs'][0]['baseToken'['symbol']])
+    return (response['pairs'][0]['priceUsd'], response['pairs'][0]['fdv'], response['pairs'][0]['baseToken']['symbol'])
     
     
     
@@ -51,10 +55,15 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
 
     try:
         current_price, mcap, symbol = await get_token_price(address)
+        current_price = float(format_number(float(current_price)))
+        initial_price = float(format_number(float(initial_price)))
+        print(current_price)
+        print(initial_price)
         multiplier = current_price / initial_price
-
+        print(multiplier)
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
+        
         if new_multiplier > 100:
             return None
         if new_multiplier > max_notified_multiplier:

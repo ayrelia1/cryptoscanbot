@@ -38,8 +38,9 @@ router.message.filter(filtersbot.AdminCheck()) # привязываем филь
 router.callback_query.filter(filtersbot.AdminCheck()) # привязываем фильтр к роутеру
 
 
-
-
+# @router.message()
+# async def go_main(message: types.Message, state: FSMContext):
+#     print(message.entities)
     
 # меню
 @router.callback_query(F.data == 'main_menu')
@@ -163,7 +164,7 @@ async def pub_post(callback: types.CallbackQuery, state: FSMContext):
         
         await bot.delete_message(message_id=callback.message.message_id, chat_id=callback.message.chat.id)
         await bot.send_message(chat_id=callback.message.chat.id, text='Отлично, пост отправлен!', reply_markup=menu(), disable_web_page_preview=True)
-        price = await get_token_price(address)
+        price, mcap, symbol = await get_token_price(address)
         await databasework.ins_token(address, network, price, data['name'], data['symbol'], channel_id, message_id)
         
     except Exception as ex:
