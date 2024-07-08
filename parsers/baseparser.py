@@ -3,7 +3,7 @@ import asyncio
 from parsers.webdriver.webdriver import get_user_browser
 from contextlib import asynccontextmanager
 import re
-#import xvfbwrapper
+import xvfbwrapper
 
 class BaseParser(ABC):
     
@@ -12,11 +12,11 @@ class BaseParser(ABC):
         driver = get_user_browser()
         try:
             
-            #vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
-            #vdisplay.start()
+            vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
+            vdisplay.start()
             yield driver
         finally:
-            #vdisplay.stop()
+            vdisplay.stop()
             driver.quit()
     
     @staticmethod
