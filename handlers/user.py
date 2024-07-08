@@ -15,7 +15,6 @@ from parsers.etherscan import Etherscan
 from parsers.basescan import Basescan
 from parsers.tonscan import Tonscan
 import re
-import requests
 from pyrogram import Client
 import traceback
 import logging
