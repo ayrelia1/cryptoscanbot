@@ -4,7 +4,7 @@ from db.db import engine, async_session
 from sqlalchemy import BigInteger, text
 from sqlalchemy.orm import relationship, Mapped, mapped_column, DeclarativeBase
 from sqlalchemy.ext.asyncio import AsyncAttrs
-from sqlalchemy import Integer, String, CheckConstraint, UniqueConstraint, Float, DateTime
+from sqlalchemy import Integer, String, CheckConstraint, UniqueConstraint, Float, DateTime, BigInteger
 
 
 
@@ -59,15 +59,14 @@ class Tokens(Base):
     symbol = mapped_column(String(100), index=True)
     history = mapped_column(
         Integer, 
-        default=1,
-        server_default=1,
+        server_default='1'
     )
     datetime = mapped_column(
         DateTime,
         server_default=text("CURRENT_TIMESTAMP")
     )
-    channel_id = mapped_column(Integer())
-    message_id = mapped_column(Integer())
+    channel_id = mapped_column(BigInteger)
+    message_id = mapped_column(BigInteger)
 
 
 

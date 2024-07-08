@@ -12,12 +12,13 @@ async def check_price_token():
     try:
         tokens = await databasework.get_all_tokens()
         for token in tokens:
-            result_x = await track_token_price(token[0], token[2], tokens[1], tokens[5])
-            channel_id = token[7]
-            message_id = token[8]
-            
-            async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
-                await app.send_message(text='', chat_id=channel_id, reply_to_message_id=message_id)
+            result_x = await track_token_price(token[0], token[2], token[1], token[5])
+            if result_x:
+                channel_id = token[7]
+                message_id = token[8]
+                
+                async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
+                    await app.send_message(text='', chat_id=channel_id, reply_to_message_id=message_id)
             
     except Exception as ex:
         logging.error(traceback.format_exc())
@@ -50,11 +51,12 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
         if new_multiplier > 100:
-            return # до сотни
+            return None
         if new_multiplier > max_notified_multiplier:
             print(f"Token price has reached {new_multiplier}x: {current_price}")
             await databasework.update_max_notified_multiplier_token(new_multiplier, id_token)
             return new_multiplier
+        return None
 
     except Exception as e:
         logging.error(f"An error occurred: {e}")
