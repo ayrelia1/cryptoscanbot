@@ -24,7 +24,7 @@ async def check_price_token():
                 text = texts[f"x_template_{network}"].format(network=network, mcap=mcap, x=x, symbol=symbol)
                 
                 async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
-                    await app.send_message(text=text, chat_id=channel_id, reply_to_message_id=message_id)
+                    await app.send_message(text=text, chat_id=channel_id, reply_to_message_id=message_id, disable_web_page_preview=True)
             
     except Exception as ex:
         logging.error(traceback.format_exc())
