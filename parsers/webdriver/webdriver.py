@@ -3,7 +3,7 @@ from selenium.webdriver import Chrome, ChromeOptions
 from config import current_directory
 
 def get_user_browser():
-    chrome_driver_path = Service(f'/home/cryptoscanbot/parsers/webdriver/chromedriver/chromedriver')
+    chrome_driver_path = Service('parsers/webdriver/chromedriver/chromedriver')
     options = ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
@@ -13,7 +13,8 @@ def get_user_browser():
     #options.add_argument(f'--profile-directory={profile}')
     #options.add_argument("--headless=new")
     options.add_argument('--User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36')
-    options.add_argument("--no-sandbox")
+    options.add_argument("no-sandbox")
+    options.add_argument("disable-dev-shm-usage")
     driver = Chrome(service=chrome_driver_path, options=options)
     
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
