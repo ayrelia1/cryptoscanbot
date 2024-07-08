@@ -16,7 +16,7 @@ class BaseParser(ABC):
         try:
             yield driver
         finally:
-            #vdisplay.stop()
+            vdisplay.stop()
             driver.quit()
     
     @staticmethod
