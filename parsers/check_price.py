@@ -57,10 +57,7 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         current_price, mcap, symbol = await get_token_price(address)
         current_price = float(format_number(float(current_price)))
         initial_price = float(format_number(float(initial_price)))
-        print(current_price)
-        print(initial_price)
         multiplier = current_price / initial_price
-        print(multiplier)
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
         
