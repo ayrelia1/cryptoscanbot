@@ -5,12 +5,13 @@ from contextlib import asynccontextmanager
 import re
 import xvfbwrapper
 vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
-vdisplay.start()
+
 class BaseParser(ABC):
     
     @asynccontextmanager
     async def get_browser(self):
-
+        vdisplay.start()
+        
         driver = get_user_browser()
         try:
             yield driver
