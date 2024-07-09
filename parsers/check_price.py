@@ -18,17 +18,18 @@ async def check_price_token():
                 message_id = token[9]
                 network = token[2]
                 mcap = result_x['mcap']
-                symbol = result_x['symbol']
+                symbol = token[4]
                 x = result_x['new_multiplier']
+                
                 
                 text = texts[f"x_template_{network}"].format(network=network, mcap=mcap, x=x, symbol=symbol)
                 
                 if result_x['percent_change'] > 99 and result_x['percent_change'] < 3001:
                     
-                    photo_path = current_directory + f"assets/{str(result_x['percent_change'])}.jpg"
+                    photo_path = current_directory + f"/assets/{str(result_x['percent_change'])}.jpg"
                     
                     async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
-                        await app.send_photo(caption=text, photo=photo_path, chat_id=channel_id, reply_to_message_id=message_id, disable_web_page_preview=True)
+                        await app.send_photo(caption=text, photo=photo_path, chat_id=channel_id, reply_to_message_id=message_id)
                 
                 else:
                     async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
@@ -68,7 +69,7 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         multiplier = current_price / initial_price
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
-        percent_change = (multiplier - 1) * 100
+        percent_change = (new_multiplier - 1) * 100
         
         
         if new_multiplier > 100:
