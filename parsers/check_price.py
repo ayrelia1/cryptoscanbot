@@ -1,5 +1,5 @@
 import aiohttp
-from config import settings, texts
+from config import settings, texts, current_directory
 from sql_function import databasework
 import json
 import aiohttp
@@ -23,8 +23,16 @@ async def check_price_token():
                 
                 text = texts[f"x_template_{network}"].format(network=network, mcap=mcap, x=x, symbol=symbol)
                 
-                async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
-                    await app.send_message(text=text, chat_id=channel_id, reply_to_message_id=message_id, disable_web_page_preview=True)
+                if result_x['percent_change'] > 99 and result_x['percent_change'] < 3001:
+                    
+                    photo_path = current_directory + f"assets/{str(result_x['percent_change'])}.jpg"
+                    
+                    async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
+                        await app.send_photo(caption=text, photo=photo_path, chat_id=channel_id, reply_to_message_id=message_id, disable_web_page_preview=True)
+                
+                else:
+                    async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
+                        await app.send_message(text=text, chat_id=channel_id, reply_to_message_id=message_id, disable_web_page_preview=True)
             
     except Exception as ex:
         logging.error(traceback.format_exc())
@@ -60,6 +68,8 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         multiplier = current_price / initial_price
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
+        percent_change = (multiplier - 1) * 100
+        
         
         if new_multiplier > 100:
             return None
@@ -71,7 +81,8 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
                 "new_multiplier": new_multiplier,
                 "mcap": mcap,
                 "current_price": current_price,
-                "symbol": symbol
+                "symbol": symbol,
+                "percent_change": percent_change
             }
             
             return data
