@@ -18,7 +18,7 @@ async def check_price_token():
                 message_id = token[9]
                 network = token[2]
                 mcap = result_x['mcap']
-                symbol = token[4]
+                symbol = token[5]
                 x = result_x['new_multiplier']
                 
                 
