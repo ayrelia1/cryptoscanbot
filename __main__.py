@@ -12,7 +12,7 @@ from parsers.check_price import check_price_token
 import sys
 
 
-
+# govno
 
 
 
