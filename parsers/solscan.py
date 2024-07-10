@@ -7,6 +7,7 @@ import re
 import logging
 from contextlib import asynccontextmanager
 
+
 class Solscan(BaseParser):
     def __init__(self):
         pass
@@ -23,6 +24,7 @@ class Solscan(BaseParser):
         if uri_ipfs:
             token_info = await self.parse_uri(uri_ipfs)
             return token_info
+        logging.error(f'Адрес {url} ошибка парсинга, не собрал элементы')
         return {}
         
         
