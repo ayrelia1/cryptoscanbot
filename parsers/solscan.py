@@ -38,7 +38,7 @@ class Solscan(BaseParser):
         soup = BeautifulSoup(html_page, 'html.parser')
         html_str = str(soup)
         tree = etree.HTML(html_str)
-        uri_element = tree.xpath('//*[@id="radix-:rk:-content-json"]/div/div/div/div/div/div/div/div[4]/div/div/div[3]/div/div/span')
+        uri_element = tree.xpath('/html/body/div/div[1]/div[3]/div[1]/div[2]/div[2]/div[2]/div/div[8]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/div/div/div[3]/div/div/span')
         if uri_element:
             print('uri finded')
             uri = uri_element[0].text 
