@@ -75,7 +75,7 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         crat = [(1.4, 1.6), (1.6, 1.8), [1.8, 2]]
         
         for i in crat:
-            if new_multiplier_float >= i[0] and new_multiplier_float > max_notified_multiplier:
+            if new_multiplier_float >= i[0] and new_multiplier_float <= i[1] and new_multiplier_float > max_notified_multiplier:
                 await databasework.update_max_notified_multiplier_token(i[1], id_token)
             
                 data = {
