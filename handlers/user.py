@@ -153,17 +153,18 @@ async def pub_post(callback: types.CallbackQuery, state: FSMContext):
             if image:
                 image_path=data.get('image_path', None)
                 if image_path:
-                    msg = await app.send_photo(chat_id=-1002163207563, photo=image_path, caption=text)
+                    msg = await app.send_photo(chat_id=settings.CHANNEL_ID, photo=image_path, caption=text)
                 else:
-                    msg = await app.send_photo(chat_id=-1002163207563, photo=image, caption=text)
+                    msg = await app.send_photo(chat_id=settings.CHANNEL_ID, photo=image, caption=text)
             else:
-                msg = await app.send_message(chat_id=-1002163207563, text=text, disable_web_page_preview=True)
+                msg = await app.send_message(chat_id=settings.CHANNEL_ID, text=text, disable_web_page_preview=True)
         
         channel_id, message_id = msg.chat.id, msg.id
         
+        price, mcap, symbol = await get_token_price(address)
         await bot.delete_message(message_id=callback.message.message_id, chat_id=callback.message.chat.id)
         await bot.send_message(chat_id=callback.message.chat.id, text='Отлично, пост отправлен!', reply_markup=menu(), disable_web_page_preview=True)
-        price, mcap, symbol = await get_token_price(address)
+        
         await databasework.ins_token(address, network, price, data['name'], data['symbol'], channel_id, message_id)
         
     except Exception as ex:
