@@ -12,7 +12,7 @@ from parsers.check_price import check_price_token
 import sys
 
 
-# 123
+
 
 @dp.startup()
 async def start_commands(bot: Bot):
