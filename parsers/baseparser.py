@@ -4,19 +4,19 @@ from parsers.webdriver.webdriver import get_user_browser
 from contextlib import asynccontextmanager
 import re
 import xvfbwrapper
-vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
+#vdisplay = xvfbwrapper.Xvfb(width=1920, height=1080)
 
 class BaseParser(ABC):
     
     @asynccontextmanager
     async def get_browser(self):
-        vdisplay.start()
+#        vdisplay.start()
         
         driver = get_user_browser()
         try:
             yield driver
         finally:
-            vdisplay.stop()
+#            vdisplay.stop()
             driver.quit()
     
     @staticmethod
