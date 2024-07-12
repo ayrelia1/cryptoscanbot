@@ -68,7 +68,9 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         initial_price = float(format_number(float(initial_price)))
         multiplier = current_price / initial_price
         percent_change = (multiplier - 1) * 100
-
+        if address == 'Aa2WZ259N8AXD6CqvkeGzWNaYkxEcobDpPyyoZ6bShAx':
+            print(percent_change)
+            print(multiplier)
         # Пороговые значения процентов для проверки
         thresholds = [40, 60, 80]
         
