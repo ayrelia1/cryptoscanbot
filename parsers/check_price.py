@@ -60,8 +60,8 @@ async def get_token_price(address):
     
 
 async def track_token_price(id_token, initial_price, address, max_notified_multiplier):
-       
-      
+
+
     try:
         current_price, mcap, symbol = await get_token_price(address)
         current_price = float(format_number(float(current_price)))
@@ -69,28 +69,24 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         multiplier = current_price / initial_price
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
+        new_multiplier_float = round(multiplier, 1)
         percent_change = (new_multiplier - 1) * 100
         
-                # Пороговые значения процентов для проверки
-        thresholds = [(1.4, 1,59), (1.6, 1.79), (1.8, 1.99)]
+        crat = [(1.4, 1.6), (1.6, 1.8), [1.8, 2]]
         
-        # Проверка процентов изменения
-        for threshold in thresholds:
-            if round(multiplier, 1) >= threshold[0]:
+        for i in crat:
+            if new_multiplier_float >= i[0]:
+                await databasework.update_max_notified_multiplier_token(i[1], id_token)
+            
+                data = {
+                    "new_multiplier": round(new_multiplier_float, 1),
+                    "mcap": mcap,
+                    "current_price": current_price,
+                    "symbol": symbol,
+                    "percent_change": percent_change
+                }
                 
-                # Обновление максимальной достигнутой кратности, если превышает текущую
-                if round(multiplier, 1) > max_notified_multiplier:
-                    await databasework.update_max_notified_multiplier_token(threshold[1], id_token)
-                    
-
-                    data = {
-                        "new_multiplier": round(multiplier, 1),
-                        "mcap": mcap,
-                        "current_price": current_price,
-                        "symbol": symbol,
-                        "percent_change": percent_change
-                    }
-                    return data
+                return data
         
         
         if new_multiplier > 100:
@@ -112,6 +108,6 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         
         
         return None
-      
+
     except Exception as e:
         logging.error(f"An error occurred: {e}")
