@@ -67,11 +67,32 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         current_price = float(format_number(float(current_price)))
         initial_price = float(format_number(float(initial_price)))
         multiplier = current_price / initial_price
+        percent_change = (multiplier - 1) * 100
+
+        # Пороговые значения процентов для проверки
+        thresholds = [40, 60, 80]
+        
+        # Проверка процентов изменения
+        for threshold in thresholds:
+            if percent_change >= threshold and percent_change < (threshold + 20):
+                print(f"Token price has increased by {threshold}%: {current_price}")
+                
+                # Обновление максимальной достигнутой кратности, если превышает текущую
+                if multiplier > max_notified_multiplier:
+                    await databasework.update_max_notified_multiplier_token(multiplier, id_token)
+                    max_notified_multiplier = multiplier
+
+                data = {
+                    "new_multiplier": multiplier,
+                    "mcap": mcap,
+                    "current_price": current_price,
+                    "symbol": symbol,
+                    "percent_change": percent_change
+                }
+                return data
+
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
-        percent_change = (new_multiplier - 1) * 100
-        
-        
         if new_multiplier > 100:
             return None
         if new_multiplier > max_notified_multiplier:
@@ -85,12 +106,8 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
                 "symbol": symbol,
                 "percent_change": percent_change
             }
-            
             return data
-        
-        
-        
-        return None
 
+        return None
     except Exception as e:
         logging.error(f"An error occurred: {e}")

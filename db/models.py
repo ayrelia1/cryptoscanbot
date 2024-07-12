@@ -59,7 +59,7 @@ class Tokens(Base):
     name = mapped_column(String(100), index=True)
     symbol = mapped_column(String(100), index=True)
     history = mapped_column(
-        Integer, 
+        Float, 
         server_default='1'
     )
     datetime = mapped_column(
