@@ -11,6 +11,7 @@ __pycache__/
 *.so
 
 # session
+
 my_account.session
 
 # Distribution / packaging
