@@ -18,6 +18,7 @@ dist/
 downloads/
 eggs/
 .eggs/
+my_account_session
 lib/
 lib64/
 parts/
