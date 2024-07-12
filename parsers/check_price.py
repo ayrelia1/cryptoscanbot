@@ -76,21 +76,21 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
 
 
         # Проверка процентов изменения и кратности
-        for threshold in thresholds:
-            if max_notified_multiplier < threshold <= multiplier:
-                # Обновление максимальной достигнутой кратности
-                await databasework.update_max_notified_multiplier_token(round(threshold, 1), id_token)
-                max_notified_multiplier = threshold
+        if multiplier > max_notified_multiplier:
+            for threshold in thresholds:
+                if multiplier >= threshold:
+                    # Обновление максимальной достигнутой кратности
+                    await databasework.update_max_notified_multiplier_token(round(threshold, 1), id_token)
+                    max_notified_multiplier = threshold
 
-                data = {
-                    "new_multiplier": round(multiplier, 1),
-                    "mcap": mcap,
-                    "current_price": current_price,
-                    "symbol": symbol,
-                    "percent_change": percent_change
-                }
-                return data
-
+                    data = {
+                        "new_multiplier": round(multiplier, 1),
+                        "mcap": mcap,
+                        "current_price": current_price,
+                        "symbol": symbol,
+                        "percent_change": percent_change
+                    }
+                    return data
         # Проверка новых кратностей
         new_multiplier = int(multiplier)
         if new_multiplier > 100:
