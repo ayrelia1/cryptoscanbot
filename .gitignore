@@ -10,6 +10,9 @@ __pycache__/
 # C extensions
 *.so
 
+# session
+my_account.session
+
 # Distribution / packaging
 .Python
 build/
@@ -18,7 +21,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-my_account.session
+
 lib/
 lib64/
 parts/
