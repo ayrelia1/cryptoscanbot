@@ -14,8 +14,6 @@ import sys
 
 
 
-
-
 @dp.startup()
 async def start_commands(bot: Bot):
     commands = [
