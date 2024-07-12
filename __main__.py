@@ -14,7 +14,7 @@ import sys
 
 
 
-@dp.startup() 
+@dp.startup() # startup
 async def start_commands(bot: Bot):
     commands = [
         BotCommand(
