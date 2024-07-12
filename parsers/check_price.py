@@ -26,8 +26,7 @@ async def check_price_token():
                 
                 if result_x['percent_change'] > 99 and result_x['percent_change'] < 3001:
                     
-                    photo_path = current_directory + f"/assets/{str(result_x['percent_change'])}.jpg"
-                    print(photo_path)
+                    photo_path = current_directory + f"/assets/{str(int(result_x['percent_change']))}.jpg"
                     
                     async with Client("my_account", api_id=settings.API_ID, api_hash=settings.API_HASH) as app:
                         await app.send_photo(caption=text, photo=photo_path, chat_id=channel_id, reply_to_message_id=message_id)
