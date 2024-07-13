@@ -72,7 +72,9 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         new_multiplier_float = round(multiplier, 1)
         percent_change = (new_multiplier - 1) * 100
         
-        crat = [(1.4, 1.59999), (1.6, 1.79999), (1.8, 1.9999)]
+        crat = [(1.4, 1.5), (1.6, 1.7), (1.8, 1.9)]
+        print(max_notified_multiplier)
+        print(new_multiplier_float)
         
         for i in crat:
             if (new_multiplier_float >= i[0] and new_multiplier_float <= i[1]) and new_multiplier_float > max_notified_multiplier:
