@@ -12,7 +12,7 @@ async def check_price_token():
     try:
         tokens = await databasework.get_all_tokens()
         for token in tokens:
-            result_x = await track_token_price(token[0], token[3], token[1], token[6])
+            result_x = await track_token_price(token[0], token[3], token[1], round(token[6], 1))
             if result_x:
                 channel_id = token[8]
                 message_id = token[9]
@@ -79,7 +79,8 @@ async def track_token_price(id_token, initial_price, address, max_notified_multi
         for i in crat:
             if (new_multiplier_float >= i[0] and new_multiplier_float <= i[1]) and new_multiplier_float > max_notified_multiplier:
                 await databasework.update_max_notified_multiplier_token(i[1], id_token)
-            
+                max_notified_multiplier = i[1]
+                
                 data = {
                     "new_multiplier": round(new_multiplier_float, 1),
                     "mcap": mcap,
