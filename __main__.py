@@ -53,11 +53,8 @@ async def main() -> None:     # функция запуска бота
         
         
     setup(dp)  # мидлвари    
-    try:
-        await dp.start_polling(bot) # запуск поллинга
-    except Exception as ex:
-        print(ex)
-
+    
+    await dp.start_polling(bot) # запуск поллинга
         
     
 if __name__ == "__main__":
