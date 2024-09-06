@@ -60,8 +60,8 @@ class Tronscan(BaseParser):
         print(token)
         
         dict_result = {
-            "name": json_info['name'],
-            "symbol": json_info['symbol'],
+            "name": token['name'],
+            "symbol": token['symbol'],
             "image": token['icon_url'],
             "telegram": telegram_link,
             "website": website_link
