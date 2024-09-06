@@ -53,7 +53,7 @@ class Tronscan(BaseParser):
         for media in social_media_list:
             if media['name'] == 'Telegram':
                 telegram_link = media["url"]
-                telegram_link = json.loads(telegram_link)
+                telegram_link = json.loads(telegram_link)[0]
 
 
         website_link = token.get('home_page', None)    
