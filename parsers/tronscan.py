@@ -56,7 +56,9 @@ class Tronscan(BaseParser):
 
         website_link = token.get('home_page', None)    
         
-    
+        print(json_info)
+        print(token)
+        
         dict_result = {
             "name": json_info['name'],
             "symbol": json_info['symbol'],
