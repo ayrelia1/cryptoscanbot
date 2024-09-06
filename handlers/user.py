@@ -39,9 +39,9 @@ router.message.filter(filtersbot.AdminCheck()) # привязываем филь
 router.callback_query.filter(filtersbot.AdminCheck()) # привязываем фильтр к роутеру
 
 
-@router.message()
-async def go_main(message: types.Message, state: FSMContext):
-    print(message.entities)
+# @router.message()
+# async def go_main(message: types.Message, state: FSMContext):
+#     print(message.entities)
     
 # меню
 @router.callback_query(F.data == 'main_menu')
