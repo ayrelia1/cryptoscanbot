@@ -25,7 +25,8 @@ class Tronscan(BaseParser):
     async def get_token_info(self, url: str) -> dict:
         json_info = await self.get_html_page(url)
         if json_info:
-            result = await self.parse_html(json.loads(json_info))
+            result = await self.parse_html(json_info)
+            print(result)
             return result
         return {}
         
@@ -35,9 +36,10 @@ class Tronscan(BaseParser):
             async with session.get(url=f"https://apilist.tronscanapi.com/api/token_trc20?contract={address}&showAll=1&start=&limit=") as resp:
                 try: 
                     resp_json = await resp.json()
+                    return resp_json
                 except:
                     return None
-        await self.parse_html(resp_json)
+        #await self.parse_html(resp_json)
         
     async def parse_html(self, json_info: dict) -> str:
         telegram_link = None
@@ -57,7 +59,7 @@ class Tronscan(BaseParser):
         website_link = token.get('home_page', None)    
         
 
-        print(token)
+
         dict_result = {
             "name": token['name'],
             "symbol": token['symbol'],
@@ -65,9 +67,7 @@ class Tronscan(BaseParser):
             "telegram": telegram_link,
             "website": website_link
         }
-        print(1)
-        print(dict_result)
-        print(1)
+
         return dict_result
     
 
