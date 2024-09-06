@@ -14,7 +14,7 @@
     "x_template_SOL": "Profit:  {x}X (<emoji id=5343649557785879150>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
     "x_template_TON": "Profit:  {x}X (<emoji id=5345889288741461772>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
     "x_template_BASE": "Profit:  {x}X (<emoji id=4911400458523771897>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
-    "x_template_TRON": "Profit:  {x}X (<emoji id=4916147033041011630>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>"
+    "x_template_TRX": "Profit:  {x}X (<emoji id=4916147033041011630>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>"
 
 }
 
