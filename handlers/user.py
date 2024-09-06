@@ -14,6 +14,7 @@ from parsers.solscan import Solscan
 from parsers.etherscan import Etherscan
 from parsers.basescan import Basescan
 from parsers.tonscan import Tonscan
+from parsers.tronscan import Tronscan
 import re
 from pyrogram import Client
 import traceback
@@ -28,7 +29,8 @@ tonscan = Tonscan()
 solscan = Solscan()
 etherscan = Etherscan()
 basescan = Basescan()
-
+tronscan = Tronscan()
+    
 router = Router()
 
 
@@ -99,6 +101,12 @@ async def scan_token(callback: types.CallbackQuery, state: FSMContext):
         text: str = texts['basescan']
         network = 'BASE'
         dexscreener = 'base'
+    if callback.data == 'tronscan':
+        func = tronscan.get_token_info
+        text: str = texts['tronscan']
+        network = 'TRX'
+        dexscreener = 'tron'
+        
         
     result = await func(address)
     if result.get('name', None) == None or result.get('symbol', None) == None:
@@ -207,7 +215,6 @@ async def edit_photo(message: types.Message, state: FSMContext):
     await state.update_data(image=photo, image_path=media)
     await message.answer_photo(caption=cleaned_text, photo=photo, parse_mode='html', reply_markup=markup, disable_web_page_preview=True)
     await state.set_state(RequestState.three)
-    
     
     
 
