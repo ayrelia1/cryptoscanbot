@@ -76,7 +76,7 @@ async def add_token_handler(message: types.Message, state: FSMContext):
 
 
 #говнокод on
-@router.callback_query(RequestState.two, F.data.in_(['solscan', 'tonscan', 'etherscan', 'basescan']))
+@router.callback_query(RequestState.two, F.data.in_(['solscan', 'tonscan', 'etherscan', 'basescan', 'tronscan']))
 async def scan_token(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(RequestState.three)
     data = await state.get_data()
