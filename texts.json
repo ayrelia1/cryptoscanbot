@@ -3,7 +3,7 @@
     "etherscan": "(<emoji id=4911178692182410246>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=4911178692182410246>🪙</emoji> ca:\n<b>{address}</b>\n",
     "basescan": "(<emoji id=4911400458523771897>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=4911400458523771897>🪙</emoji> ca:\n<b>{address}</b>\n",
     "tonscan": "(<emoji id=5345889288741461772>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=5345889288741461772>🪙</emoji> ca:\n<b>{address}</b>\n",
-
+    "tronscan": "(<emoji id=5345889288741461772>🪙</emoji>{network}) {symbol}\nZeus Calls | Crypto x100 <emoji id=5456140674028019486>🌟</emoji>\nRisk  <emoji id=5350314303352223876>🎲</emoji> \nDyor{telegram}{website}\n\n{dexscreener}\n\n<emoji id=5345889288741461772>🪙</emoji> ca:\n<b>{address}</b>\n",
 
     "telegram_emoji": "<emoji id=5217561885049628845>✅</emoji>",
     "website_emoji": "<emoji id=5447410659077661506>🌐</emoji>",
@@ -13,7 +13,8 @@
     "x_template_ETH": "Profit:  {x}X (<emoji id=4911178692182410246>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
     "x_template_SOL": "Profit:  {x}X (<emoji id=5343649557785879150>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
     "x_template_TON": "Profit:  {x}X (<emoji id=5345889288741461772>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
-    "x_template_BASE": "Profit:  {x}X (<emoji id=4911400458523771897>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>"
+    "x_template_BASE": "Profit:  {x}X (<emoji id=4911400458523771897>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>",
+    "x_template_TRON": "Profit:  {x}X (<emoji id=4911400458523771897>🪙</emoji> {network}) {symbol}\n\nMCap:  💎 now {mcap}\n\n@zeus_ca1ls  <emoji id=5373066076558996568>⚡</emoji>"
 
 }
 

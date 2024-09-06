@@ -45,6 +45,7 @@ def networks_markup(): # старт кнопки
         .button(text='Ton', callback_data='tonscan') # 
         .button(text='Ethereum', callback_data='etherscan') # 
         .button(text='Base', callback_data='basescan') # 
+        .button(text='Tron', callback_data='tronscan') # 
         .button(text='✔️ На главную', callback_data='main_menu') # 
         .adjust(2, repeat=True)
         .as_markup()
