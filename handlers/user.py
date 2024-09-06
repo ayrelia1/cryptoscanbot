@@ -110,6 +110,7 @@ async def scan_token(callback: types.CallbackQuery, state: FSMContext):
         
     result = await func(address)
     print(result)
+    
     if result.get('name', None) == None or result.get('symbol', None) == None:
         markup = menu()
         await bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.message_id, text='Ошибка! Данные не были собраны!', reply_markup=markup)

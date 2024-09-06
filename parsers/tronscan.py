@@ -56,9 +56,8 @@ class Tronscan(BaseParser):
 
         website_link = token.get('home_page', None)    
         
-        print(json_info)
+
         print(token)
-        
         dict_result = {
             "name": token['name'],
             "symbol": token['symbol'],
@@ -66,7 +65,9 @@ class Tronscan(BaseParser):
             "telegram": telegram_link,
             "website": website_link
         }
-    
+        print(1)
+        print(dict_result)
+        print(1)
         return dict_result
     
 
