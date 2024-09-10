@@ -11,7 +11,7 @@ def get_user_browser():
     options.add_argument("--start-maximized")
     options.add_argument("--enable-javascript")
     #options.add_argument(f'--profile-directory={profile}')
-    options.add_argument("--headless=new")
+    #options.add_argument("--headless=new")
     options.add_argument('--User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36')
     options.add_argument("--no-sandbox")
     options.add_argument("disable-dev-shm-usage")

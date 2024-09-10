@@ -37,7 +37,6 @@ class Etherscan(BaseParser):
         for ace_line in ace_lines:
             combined_text += ace_line.text.strip() + "\n"
             
-        print(combined_text)
         
         telegram_pattern = re.compile(r'https?://(?:t(?:elegram)?\.me|telegram\.me|t\.co)/[^\s]+')
         telegram_link = self.find_links_in_text('tg', combined_text, telegram_pattern)
@@ -46,7 +45,6 @@ class Etherscan(BaseParser):
         website_link = self.find_links_in_text('site', combined_text, website_pattern)
                   
         token_block = soup.find('div', class_='d-flex align-items-center gap-1 mt-2')
-        print(token_block)
         name, symbol = None, None
         if token_block:
             
