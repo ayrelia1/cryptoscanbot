@@ -16,7 +16,6 @@ class Etherscan(BaseParser):
         
     async def get_token_info(self, url: str) -> dict:
         html_page = await self.get_html_page(url)
-        print('html page')
         result = await self.parse_html(html_page)
         return result
         
@@ -29,10 +28,9 @@ class Etherscan(BaseParser):
         return html_page
         
     async def parse_html(self, html_page: str) -> str:
-        print('parse')
         soup = BeautifulSoup(html_page, 'html.parser')
         # Инициализируем BeautifulSoup
-        ace_lines = soup.find_all(class_="ace_line_group")
+        ace_lines = soup.find_all(class_="ace_line")
 
         # Собираем первые 20 строк из каждого блока в одну переменную
         combined_text = ""
@@ -48,9 +46,10 @@ class Etherscan(BaseParser):
         website_link = self.find_links_in_text('site', combined_text, website_pattern)
                   
         token_block = soup.find('div', class_='d-flex align-items-center gap-1 mt-2')
-        
+        print(token_block)
         name, symbol = None, None
         if token_block:
+            
             # Извлечение текста из элемента 'a'
             token_text = token_block.find('a').get_text()
             
