@@ -32,7 +32,7 @@ class Etherscan(BaseParser):
         print('parse')
         soup = BeautifulSoup(html_page, 'html.parser')
         # Инициализируем BeautifulSoup
-        ace_lines = soup.find_all(class_="ace_line")
+        ace_lines = soup.find_all(class_="ace_line_group")
 
         # Собираем первые 20 строк из каждого блока в одну переменную
         combined_text = ""
