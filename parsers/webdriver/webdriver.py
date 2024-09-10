@@ -3,8 +3,7 @@ from selenium.webdriver import Chrome, ChromeOptions
 from config import current_directory
 
 def get_user_browser():
-    print(current_directory + '/parsers/webdriver/chromedriver')
-    chrome_driver_path = Service(r'parsers//webdriver//chromedriver')
+    chrome_driver_path = Service('parsers/webdriver/chromedriver/chromedriver')
     options = ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
