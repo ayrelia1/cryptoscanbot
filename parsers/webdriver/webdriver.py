@@ -4,7 +4,7 @@ from config import current_directory
 
 def get_user_browser():
     print(current_directory + '/parsers/webdriver/chromedriver')
-    chrome_driver_path = Service(current_directory + '/parsers/webdriver/chromedriver')
+    chrome_driver_path = Service(r'parsers//webdriver//chromedriver')
     options = ChromeOptions()
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
